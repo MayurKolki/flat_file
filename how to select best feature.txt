@@ -1,0 +1,33 @@
+How to select best features?
+- looking at dataset (remove id/date/strings)
+
+PGA as Imarticus andalso pursing at Ineuron
+
+- Singularities
+
+- multicolinearity ( aplicable only in numeric data)
+
+- ANOVA and Chi square test (chi sq use when dependent and independent variables are factor ex. Logistic regression)
+
+- ANOVA use where more than 2 sample of mean are same ex.regression problems
+
+- if t tstat value lies above critical value (reject null hypothesis) called variable is significant and 
+if t stat value lies below   critical value (fail to reject null hypothesis) then variable is insignificant.
+
+- Greater the score more significant in particualar variable
+
+-  LInear, logistics
+ - levels in categorical
+- unqiue value (special character)
+- cross validation- checking of optimum value of k and check error
+                       check model errors, that errors gives us case of overfit or underfit
+
+- in DT prune unwanted featues in dataset
+
+- install.packages("InformationValue")
+ # Information Value (IV) is a measure of the predictive capability of a categorical x   variable to accurately predict the goods and bads. 
+
+- EDA = check for NUll, missing values, invalid, zero, special characters and outlirs
+              levels in factors, Distribution-(histogram/boxplot)
+
+- curse of dimentionality...if we have less data , expand data ???

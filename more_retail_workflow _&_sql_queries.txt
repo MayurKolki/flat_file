@@ -1,0 +1,78 @@
+## In this txt file I have mentions the steps which i have followed in IPYNB and sql. ##
+
+1) studied the Business output requirements from given excel file which contained 4 sheets.
+2)did brain storming to the given problem.
+2) first I worked in jupyter notebook which is attached in the mail named as "MORE_RETAIL_LIMITED.ipynb".
+3) imported the required libraries.
+4)imported the dataset. 
+5)EDA- removed "," from the integer data types,
+       converted the the data set into belonging datatypes,
+       removed NULL values, from the dataset,
+       sorted the data according to date,
+6)added new column "fillrate" such as the mathematical operation  (rcvval/orderval)
+7)Saved this cleaned dataset and exported to so that we can use for sql.
+8) observed the count of categorical data.
+9) did group by on particular categorical data, 
+   and no the levels of each categorical data.
+10)count plot charts.
+11) distribution charts.
+12) group by on format and division.
+
+due to time churn didn't able to do further task.
+##########################################################################################################
+
+### sql queries.###
+
+#import the data which I have saved from jupyter notebook, which i converted in .csv and imported in sql.
+#analytics-> Is the name of schema
+#base_data -> Is the name of table which we made from the jupyter notebook
+#attached the base_data excel file in the email.
+
+use analytics;
+select * from base_data;
+select count(*) from base_data;
+
+select * from Project_on_Covid..base_data
+
+-- Total fillrate where division is Grocery Food
+select sum(fillrate) as total_fillrate_for_grocery_Food from analytics.base_data where division_name = 'Grocery Food';
+
+-- Total fillrate where devision is Grocery Food and format is sm
+select sum(fillrate) as total_fillrate_for_grocery_Food_sm from analytics.base_data where division_name = 'Grocery Food'
+and format = 'sm'
+
+
+-- Total fillrate where devision is Grocery Food and format is hm
+select sum(fillrate) as total_fillrate_for_grocery_Food_hm from analytics.base_data where division_name = 'Grocery Food'
+and format = 'hm'
+
+
+-- Total fillrate where Devision is Grocery  Non Food
+select sum(fillrate) as total_fillrate_fro_grocery_Non_Food from analytics.base_data where division_name = 'Grocery Non Food';
+
+
+-- Total fillrate where devision is Grocery Non Food and format is sm
+select sum(fillrate) as total_fillrate_for_grocery_Non_Food_sm from analytics.base_data where division_name = 'Grocery Non Food'
+and format = 'sm'
+
+
+-- Total fillrate where devision is Grocery Non Food and format is hm
+select sum(fillrate) as total_fillrate_for_grocery_Non_Food_hm from analytics.base_data where division_name = 'Grocery Non Food'
+and format = 'hm'
+
+
+-- Total fillrate where devision is stapples
+select sum(fillrate) as total_fillrate_for_staples from analytics.base_data where division_name = 'staples';
+
+
+-- Total fillrate where devision is  staples and format is hm
+select sum(fillrate) as total_fillrate_for_staples_sm from analytics.base_data where division_name = 'staples'
+and format = 'sm'
+
+-- Total fillrate where devision is staples and format is hm
+select sum(fillrate) as total_fillrate_for_staples_hm from analytics.base_data where division_name = 'staples'
+and format = 'hm'
+
+
+--above are complete 9 query of sql only open pos column is remaining.
+

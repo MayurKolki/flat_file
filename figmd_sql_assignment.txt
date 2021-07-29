@@ -1,0 +1,75 @@
+--See the preview of the table “Patient_510”
+--SELECT *  FROM `figmd-etl.demo_session.Patient_510` LIMIT 1000;
+--Query complete (0.2 sec elapsed, 10.6 MB processed)
+
+--Get all table data using a query
+--SELECT *  FROM `figmd-etl.demo_session.Patient_510` ;
+-- Query complete (1.7 sec elapsed, 10.6 MB processed)
+
+--Find first, last and middle name for all patients
+--select first ,middle, last from `figmd-etl.demo_session.Patient_510`;
+--Query complete (0.8 sec elapsed, 700.6 KB processed)
+
+--Find all the female patients
+--select first ,middle, last from `figmd-etl.demo_session.Patient_510` where gender='Female';
+--Query complete (0.2 sec elapsed, 960.3 KB processed)
+
+--Find all the patients where they are not in the Country ‘US’
+--select first ,middle, last from `figmd-etl.demo_session.Patient_510` where country  not in ('UNITED STATES','United States','US');
+--Query complete (0.2 sec elapsed, 1.3 MB processed)
+
+--Find all the patiets who born between 1963 to 1945
+--See the preview of the table “Patient_510”
+SELECT *  FROM `figmd-etl.demo_session.Patient_510` LIMIT 1000;
+--Query complete (0.2 sec elapsed, 10.6 MB processed)
+
+--Get all table data using a query
+SELECT *  FROM `figmd-etl.demo_session.Patient_510` ;
+-- Query complete (1.7 sec elapsed, 10.6 MB processed)
+
+--Find first, last and middle name for all patients
+select first ,middle, last from `figmd-etl.demo_session.Patient_510`;
+--Query complete (0.8 sec elapsed, 700.6 KB processed)
+
+--Find all the female patients
+select first ,middle, last from `figmd-etl.demo_session.Patient_510` where gender='Female';
+--Query complete (0.2 sec elapsed, 960.3 KB processed)
+
+--Find all the patients where they are not in the Country ‘US’
+select first ,middle, last from `figmd-etl.demo_session.Patient_510` where country  not in ('UNITED STATES','United States','US');
+--Query complete (0.2 sec elapsed, 1.3 MB processed)
+
+--Find all the patiets who born between 1963 to 1945
+select first ,middle, last from `figmd-etl.demo_session.Patient_510` where dob  between '1945-01-01' and '1963-01-01';
+-- Query complete (0.3 sec elapsed, 1,018.9 KB processed)
+
+--Find all the patients without middlename
+select first ,middle , last from `figmd-etl.demo_session.Patient_510` where middle is null;
+-- Query complete (0.8 sec elapsed, 700.6 KB processed)
+
+-- Find all the patients whose records were created before ‘2019-08-05’
+SELECT first,last FROM `figmd-etl.demo_session.Patient_510` where createddate<'2019-05-08';
+--Query complete (0.3 sec elapsed, 967.7 KB processed)
+
+--Find the details of patient insurance for insurance company “Medicaid” and payerstate ‘AL’ (Use ‘PatientInsuranceInfo_510’ table)
+select *  from `figmd-etl.demo_session.PatientInsuranceInfo_510` where insurancecompany='Medicaid' and  payerstate='AL' ;
+--Query complete (0.7 sec elapsed, 18.9 MB processed)
+
+--Find all males having middlename and email address.
+SELECT first,middle,last FROM `figmd-etl.demo_session.Patient_510` where middle is not null and emailid is not null
+--Query complete (0.2 sec elapsed, 1.1 MB processed)
+
+--What all medication status text you can see in a table ‘PatientMedication_510’
+SELECT mastermedicationstatustext FROM `figmd-etl.demo_session.PatientMedication_510`
+--Query complete (0.8 sec elapsed, 0 B processed)
+
+--Find all records where lastname ends with ‘s’.
+select first,last from `figmd-etl.demo_session.Patient_510` WHERE last LIKE '%s';
+--Query complete (0.2 sec elapsed, 649.4 KB processed)
+
+--Find patientid, firstname, lastname who are living in ‘UNITED STATES’
+select patientid, first, last from `figmd-etl.demo_session.Patient_510` where country = ('UNITED STATES','United States');
+
+--Find the details of patient insurance for insurance company “Medicaid” and payerstate ‘AL’ (Use ‘PatientInsuranceInfo_510’ table)
+SELECT patientid,policyid,patientuid,documentationdate FROM `figmd-etl.demo_session.PatientInsuranceInfo_510` where insurancecompany='Medicaid' and payerstate='AL'
+--Query complete (0.2 sec elapsed, 8.7 MB processed)

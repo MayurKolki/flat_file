@@ -1,0 +1,142 @@
+hello sir i am aspiring data scientist
+developing myself in all terms.
+its grateful to be connected with u.
+also purshing the DL With Computer Vision & Advanced NLP @ineuron
+i have been following your vedios from last 8+ months 
+it has  been great help ..
+
+https://docs.google.com/forms/d/e/1FAIpQLScBVX8SSnrfPum4Mr8zjohNP6POdNZ9Y-wImrTiWCdMYEzuHQ/viewform
+
+
+https://drive.google.com/drive/folders/1NNc-JZpLgRXFKMDVa0BM3slX461twOIe?usp=sharing
+
+
+support@ineuron.ai
+9-2 pm 
+domain + tech makes wonder 
+
+tredenshils
+Gradient Descent :-to find the optimun values for a,b
+                    a,b are coefficients in LIN_REG/LOG_REG
+
+######################################## 18 april
+deep learning application :-
+* what is diference bet AL vs ML vs DL vs DS vs NLP_Engineer
+
+AI:- in entire universe in field of AI ,at the end of the you will be creating AI APPLICATION ,ex-netfix,selfdriving car, amazon.in,youtube
+netflix has recommder systme which is app , which works on user 
+
+that AI application will work withour human intervention 
+
+ML- is subset of AI ,becoz the most and imp thing is data, ml provids you stats tool to analyze the data, prediction,forecasting
+ main aim is prediction ,classification, forecasting
+
+different types of ML:- supervise un unsupervised
+
+supervised data has labelled data ,we know end goal 
+2 diferent techniques  --- reg and classification
+reg-- output will be continuous value 
+classification -- output will be fixed number of categories
+binary
+multiclass
+multilabel :-
+movie            action  romance  thrill  suspense
+endgame           1       0          1         1
+drishyam          0       0          1         1
+
+
+unsupervised ML:- we dont know your output,, main task, is clustering, segmentation, reducing dimension
+
+product --->  costly product 
+customer      salary  spending score(0-9)
+              65000        3
+              30000        5
+              90000        4
+              10000        9
+
+we will send mail with one with high spending score, but we make cluster such that  30k-60k with score(3-5), like these types
+
+
+
+
+semi-supervised machine learning (reenforecment):- 
+labelled  data --> Model  --> Recommendation 
+interaction  --> Model learns -->New Recommendation
+
+
+
+
+DL :-basically a subset of ML 
+DL is mostly talking about neural networks
+scientist thought we human being research how our brain workes
+most powerful living being with respect to thinking
+ **main aim of DL was to mimic the human brain  
+ex-alpha go, cheese   
+ it exactly means  make machine learn how we human being learn
+
+DL:- techniques initially starting with ANN ,
+  #ANN is basically called as Artificatial neural network <-- works on all tabular kind of data.
+    have u eared of automated machine learning, there you will see that ,
+any automated machine learning when we are  taking any kind of tabular data ,
+they will try to verify with all the ML algorithm and they will also verify it with ANN
+# so all the tast that you can do it with ML can also done by ANN
+
+
+CNN<-- convolution Neural n/w <-- input data as Images ,Vedios
+applications of CNN
+     1)  Image classification   <--CNN, transfer learning
+     2)  Object Detection    <--RCNN, FAST RCNN, FASTER RCNN, SSD, YOLO version V1,V2,V3,V5 ,DETECTRON
+     3)  Segmentation   <-- HEAVYLY USED IN SELF DRIVING CARS
+     4) tracking
+     5) face recognation
+     6) GAN
+
+RNN<-- Recurrent Neural Network <-- input is Text,Timeseries, sequencial Data
+    1) RNN
+    2)LSTM RNN  (GR user)
+    3)Bidirectional LSTM RNN
+    4)Encoder Decoder
+    5)Transformers
+    6)BERT
+    7)GPT1,GPT2,GPT3
+
+NLP data:- data is "text" data
+we have convert text data into an numerical representation, that representation is called as "Vectors"
+while coverting in numerical vectors there are various technique
+1)Bag of words
+2)TFIDF
+3)Word2vec  (library called janasems)
+4)Embedding
+
+unigram,bigram,mgram all are part of this kind of text processing, we also cover "rasa", whewre we will show you how to create chatbot
+
+####################################################################################
+
+9 may 2021
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

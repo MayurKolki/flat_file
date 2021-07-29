@@ -1,0 +1,883 @@
+Create database Demodatabase;
+
+-- CREATE TABLE Demodatabase.MyGuests (
+-- id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+-- firstname VARCHAR(30) NOT NULL,
+-- lastname VARCHAR(30) NOT NULL,
+-- email VARCHAR(50),
+-- reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- )
+
+Select * from sakila.actor limit 10;
+
+Create database Demodatabase
+CREATE TABLE Demodatabase.m_student
+(
+    student_id int(5) PRIMARY KEY,
+    fname varchar(20) NOT NULL,
+    lname varchar(20),
+    gender varchar(6),
+    dob varchar(10),
+    email varchar(20) NOT NULL,
+    phone int(10) NOT NULL,
+    pg varchar(20),
+    pg_rel varchar(20)
+);
+
+INSERT INTO Demodatabase.m_student VALUES (100, 'Loveesh', '', 'm', '', 'lbhatt@gmail.com', 1000900011, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (101, 'Ram', '', 'm', '', 'ram@gmail.com', 1000900022, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (102, 'Shyam', '', 'm', '', 'shyam@gmail.com', 1000900023, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (103, 'Sita', '', 'f', '', 'sita@gmail.com', 1000900024, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (104, 'Ali', '', 'm', '', 'ali@gmail.com', 1000900025, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (105, 'Gita', '', 'm', '', 'gita@gmail.com', 1000900026, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (106, 'Shane', '', 'm', '', 'shane@gmail.com', 1000900027, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (107, 'Stephny', '', 'f', '', 'step@gmail.com', 1000900028, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (108, 'Guru', '', 'm', '', 'guru@gmail.com', 1000900029, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (109, 'Soni', '', 'f', '', 'soni@gmail.com', 1000900030, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (110, 'Mark', '', 'm', '', 'mark@gmail.com', 1000900031, '', '' );
+
+select * from Demodatabase.m_student;
+
+
+drop table Demodatabase.m_student;
+CREATE TABLE Demodatabase.m_student
+(
+    student_id int(5) not null auto_increment, -- added auto increment
+    fname varchar(20),
+    lname varchar(20),
+    gender varchar(6),
+    age int(5),
+    email varchar(20),
+    phone int(10) ,
+    pg varchar(20),
+    pg_rel varchar(20),
+    primary key (student_id) -- changed
+);
+
+select * from demodatabase.m_student;
+
+INSERT INTO Demodatabase.m_student VALUES (100, 'Loveesh', '', 'm', 33, 'lbhatt@gmail.com', 1000900011, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (101, 'Ram', '', 'm', 55, 'ram@gmail.com', 1000900022, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (102, 'Shyam', '', 'm', 45, 'shyam@gmail.com', 1000900023, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (103, 'Sita', '', 'f', 22, 'sita@gmail.com', 1000900024, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (104, 'Ali', '', 'm', 35, 'ali@gmail.com', 1000900025, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (105, 'Gita', '', 'm', 38, 'gita@gmail.com', 1000900026, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (106, 'Shane', '', 'm', 28, 'shane@gmail.com', 1000900027, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (107, 'Stephny', '', 'f', 18, 'step@gmail.com', 1000900028, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (108, 'Guru', '', 'm', 34, 'guru@gmail.com', 1000900029, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (109, 'Soni', '', 'f', 47, 'soni@gmail.com', 1000900030, '', '' );
+INSERT INTO Demodatabase.m_student VALUES (110, 'Mark', '', 'm', 30, 'mark@gmail.com', 1000900031, '', '' );
+
+select * from Demodatabase.m_student; -- select all values from the table
+select * from Demodatabase.m_student limit 3; -- limit the output to 3 rows
+select count(*) from Demodatabase.m_student; -- total number of rows in data
+select fname from Demodatabase.m_student; -- retrieve fname (one variable)
+select fname, age from Demodatabase.m_student; -- retreive name and age
+select fname, age from Demodatabase.m_student limit 5; -- retrieve first 5 name and age
+select count(fname) from Demodatabase.m_student;
+select count(gender) from Demodatabase.m_student;
+select count(distinct gender) from Demodatabase.m_student;
+select count(distinct age) from Demodatabase.m_student;
+select min(age) from Demodatabase.m_student; -- min age in the dataset
+select max(age) from Demodatabase.m_student; -- max age in the dataset
+select avg(age) from Demodatabase.m_student; -- average age in the dataset
+select std(age) from Demodatabase.m_student; -- standard deviation of age
+select * from Demodatabase.m_student where age > 30; -- filtering by age
+select count(*) from Demodatabase.m_student where age > 30;
+select * from Demodatabase.m_student where age > 18 and age < 35;
+select count(*) from Demodatabase.m_student where age > 18 and age < 35;
+select * from Demodatabase.m_student where age < 25 or age > 35;
+select count(*) from Demodatabase.m_student where age < 25 or age > 35;
+select * from Demodatabase.m_student where age = 18;
+select * from Demodatabase.m_student where fname in ('Loveesh','Shane');
+select * from Demodatabase.m_student where fname in ('Loveesh','Shane') and age > 30;
+
+
+alter table Demodatabase.m_student ADD COLUMN math_m int(5);
+select * from Demodatabase.m_student;
+
+update demodatabase.m_student set math_m = 92 where student_id = 100;
+update demodatabase.m_student set math_m = 95 where student_id = 101;
+update demodatabase.m_student set math_m = 83 where student_id = 102;
+update demodatabase.m_student set math_m = 78 where student_id = 103;
+update demodatabase.m_student set math_m = 92 where student_id = 104;
+update demodatabase.m_student set math_m = 75 where student_id = 105;
+update demodatabase.m_student set math_m = 44 where student_id = 106;
+update demodatabase.m_student set math_m = 63 where student_id = 107;
+update demodatabase.m_student set math_m = 70 where student_id = 108;
+update demodatabase.m_student set math_m = 76 where student_id = 109;
+update demodatabase.m_student set math_m = 97 where student_id = 110;
+
+select * from demodatabase.m_student;
+
+delete from demodatabase.m_student where student_id = 111;
+delete from demodatabase.m_student where student_id = 112;
+delete from demodatabase.m_student where student_id = 113;
+
+alter table demodatabase.m_student drop column pg_rel;
+
+select * from demodatabase.m_student;
+
+alter table Demodatabase.m_student ADD COLUMN grade varchar(10);
+select * from demodatabase.m_student;
+
+update demodatabase.m_student set Grade = 'A' where math_m>90;
+update demodatabase.m_student set Grade = 'B' where math_m>70 and math_m <=90;
+update demodatabase.m_student set Grade = 'C' where math_m<=70;
+
+select * from demodatabase.m_student;
+
+select * from demodatabase.m_student where gender <> 'm';
+
+select avg(math_m) from demodatabase.m_student where gender = 'm'; -- 81.0000
+select avg(math_m) from demodatabase.m_student where gender = 'f'; -- 72.3333
+
+select * from demodatabase.m_student;
+select * from demodatabase.m_student where email like '%am%';
+select * from demodatabase.m_student where fname like 'Loveesh';
+
+select * from demodatabase.m_student where student_id between 105 and 110;
+
+select fname, email from demodatabase.m_student order by fname asc; -- perform sorting on fname
+select fname, email from demodatabase.m_student order by fname desc;
+
+select fname, email, math_m from demodatabase.m_student order by math_m desc limit 5;
+select avg(math_m) from (select fname, email, math_m from demodatabase.m_student order by math_m desc limit 5) a; -- 91.8000
+select avg(math_m) from demodatabase.m_student; -- 78.6364
+
+select avg(math_m) from (select * from demodatabase.m_student where grade = 'B') a; -- 78.0000 (using nesting)
+select avg(math_m) from demodatabase.m_student where grade='B'; -- using simple where clause
+
+select * from demodatabase.m_student;
+
+INSERT INTO Demodatabase.m_student VALUES (111, 'Deep', '', 'm', 32, 'deep@ymail.com', 1000900032, '', 85, 'B' );
+INSERT INTO Demodatabase.m_student VALUES (112, 'Jai', '', 'm', 27, 'jai@ymail.com', 1000900033, '', 97, 'A' );
+INSERT INTO Demodatabase.m_student VALUES (113, 'Tina', '', 'f', 26, 'tina@ymail.com', 1000900033, '', 82, 'B' );
+INSERT INTO Demodatabase.m_student VALUES (114, 'Rishi', '', 'm', 33, 'rishi@ymail.com', 1000900033, '', 65, 'C' );
+INSERT INTO Demodatabase.m_student VALUES (115, 'Shivani', '', 'f', 33, 'shivani@hotmail.com', 1000900034, '', 92, 'A' );
+INSERT INTO Demodatabase.m_student VALUES (116, 'Soni', '', 'f', 27, 'soni@hotmail.com', 1000900035, '', 97, 'A' );
+
+select gender, count(student_id), avg(math_m), max(math_m) from demodatabase.m_student group by gender;
+select grade, avg(math_m) from demodatabase.m_student group by grade order by avg(math_m) asc;
+select grade, avg(math_m), avg(age) from demodatabase.m_student group by grade order by avg(age) desc;
+select grade, gender, avg(math_m) from demodatabase.m_student group by grade, gender order by avg(math_m) desc;
+select grade, gender, avg(math_m) from demodatabase.m_student group by grade, gender having gender = 'm' order by avg(math_m) desc;
+select * from demodatabase.m_student;
+select grade, avg(age) from demodatabase.m_student group by grade having avg(age) < 30 order by avg(age);
+('Pune','Maharashtra','India',100),
+('Chennai','TamilNadu','India',101),
+('Mumbai','Maharashtra','India',102),
+('Chandigarh','Punjab','India',103),
+('Lucknow','UttarPradesh','India',104),
+('Kanpur','UttarPradesh','India',105),
+('Bangalore','Karnataka','India',106),
+('Kochi','Kerala','India',107),
+('Kolkata','WestBengal','India',108),
+('NewYork','Newyork','USA',109),
+('Miami','Florida','USA',110),
+('Detroit','Michigan','USA',111),
+('London','London','UK',112),
+('Manchester','Manchester','UK',113),
+('Tokyo','Kanto','Japan',114),
+('Kansai','Honshu','Japan',115),
+('Dubai','Dubai','UAE',116);
+
+select state, count(distinct student_id) from demodatabase.m_stud_add group by state order by count(distinct student_id) desc limit 1;
+
+-- Inner Join --
+select count(*) from demodatabase.m_student;
+
+select a.student_id, a.fname, b.city
+from demodatabase.m_student a, demodatabase.m_stud_add b
+where a.student_id = b.student_id;
+
+INSERT INTO Demodatabase.m_student VALUES (117, 'Rocky', '', 'm', 32, 'rocky@hotmail.com', 1000900040, '', 60, 'C' );
+INSERT INTO Demodatabase.m_student VALUES (118, 'Tess', '', 'f', 35, 'tess@hotmail.com', 1000900041, '', 85, 'B' );
+INSERT INTO Demodatabase.m_student VALUES (119, 'Gandry', '', 'm', 22, 'gandry@hotmail.com', 1000900042, '', 55, 'C' );
+
+select * from demodatabase.m_student;
+
+select a.student_id, a.fname, b.city
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+on a.student_id = b.student_id;
+
+select count(*) from (
+select a.student_id, a.fname, b.city
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id
+) aa;
+
+select * from (
+select a.student_id, a.fname, b.city
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id
+) aa;
+
+select * from (
+select a.*, b.city, b.state, b.country
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id
+) aa;
+
+select aa.state as STATE, avg(aa.age) as Average_Age from (
+select a.*, b.city, b.state, b.country
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id
+) aa group by aa.state order by avg(aa.age) desc;
+
+select a.*, b.city, b.state, b.country
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id;
+
+select aa.state as STATE, max(aa.math_m) as max_math from (
+select a.*, b.city, b.state, b.country
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id
+) aa group by aa.state order by max(aa.math_m) desc;
+
+select aa.state, aa.grade, count(distinct aa.student_id) as dcount_stud from (
+select a.*, b.city, b.state, b.country
+from demodatabase.m_student a inner join demodatabase.m_stud_add b
+where a.student_id = b.student_id ) aa group by aa.state, aa.grade order by dcount_stud desc;
+
+-- Left Join --
+select count(*) from (
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a left join demodatabase.m_student b
+on a.student_id = b.student_id ) aa;
+
+select count(*) from demodatabase.m_student;
+select avg(aa.math_m) from (
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a left join demodatabase.m_student b
+on a.student_id = b.student_id ) aa; -- 81.3125
+
+select avg(math_m) from demodatabase.m_student; -- 79.0000
+
+select aa.grade, avg(aa.math_m) from (
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a left join demodatabase.m_student b
+on a.student_id = b.student_id ) aa group by aa.grade order by avg(aa.math_m) desc;
+-- A 94.5714
+-- B 79.4000
+-- C 60.5000
+
+select grade, avg(math_m) from demodatabase.m_student group by grade order by avg(math_m) desc;
+-- A 94.5714
+-- B 80.3333
+-- C 59.5000
+
+select aa.gender, count(distinct aa.student_id) from (
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a left join demodatabase.m_student b
+on a.student_id = b.student_id ) aa group by aa.gender;
+
+-- f 5
+-- m 11
+
+select gender, count(distinct student_id) from demodatabase.m_student group by gender;
+
+-- f 6
+-- m 13
+
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a right outer join demodatabase.m_student b
+on a.student_id = b.student_id
+where a.student_id is null;
+
+select avg(aa.math_m) from (
+select a.city, a.state, a.country, b.*
+from demodatabase.m_stud_add a right outer join demodatabase.m_student b
+on a.student_id = b.student_id
+where a.student_id is null) aa;
+
+select * from demodatabase.m_stud_add;
+
+insert into demodatabase.m_stud_add values ('pune ', 'MAHARASHTRA', 'inDia', 117);
+insert into demodatabase.m_stud_add values ('mumbai', 'maharashtra', 'india', 118);
+insert into demodatabase.m_stud_add values ('LUCKNOW', 'uttarpradesh', 'India', 119);
+insert into demodatabase.m_stud_add values ('chandigarh', 'punjab', 'India', 120);
+
+select * from demodatabase.m_stud_add where city = 'pune'; -- fetch all records of address pune
+select * from demodatabase.m_stud_add where trim(city) = 'pune'; -- trim funtion to remove whitespaces
+select * from demodatabase.m_stud_add where state = 'Maharashtra'; -- searching for a string is not case sensitive
+select * from demodatabase.m_stud_add where lower(city) = 'pune';
+select * from demodatabase.m_stud_add where lower(trim(city)) = 'pune';
+select * from demodatabase.m_stud_add where upper(state) = 'MAHARASHTRA';
+select * from demodatabase.m_stud_add where upper(country) = 'india';
+select * from demodatabase.m_student;
+
+-- Q1
+-- get all the students whose name start with s
+-- columns to be selected student id, student name, email, phone, math_m, grade, city, state, country
+select a.student_id, a.fname, a.email, a.phone, a.math_m, a.grade, b.city, b.state, b.country
+from demodatabase.m_student a, demodatabase.m_stud_add b
+where a.student_id = b.student_id and a.fname like "s%";
+
+-- Q2
+-- select all students who are from pune
+-- columns ==> same as above
+select a.student_id, a.fname, a.email, a.phone, a.math_m, a.grade, b.city, b.state, b.country
+from demodatabase.m_student a, demodatabase.m_stud_add b
+where a.student_id = b.student_id and lower(trim(b.city)) = 'pune';
+
+-- Q3
+-- select all students whose phone number ends with 2
+-- columns ==> same as above
+
+select a.student_id, a.fname, a.email, a.phone, a.math_m, a.grade, b.city, b.state, b.country
+from demodatabase.m_student a, demodatabase.m_stud_add b
+where a.student_id = b.student_id and cast(a.phone as char) like '%2'; -- use of cast to change datatype at runtime
+
+
+select a.student_id, a.fname, a.email, a.phone, a.math_m, a.grade, b.city, b.state, b.country
+from demodatabase.m_student a, demodatabase.m_stud_add b
+where a.student_id = b.student_id and a.phone like '_________2'; -- directly using integer varaible to search a part
+
+create table demodatabase.m_stud_workexp (
+total_exp int,
+num_of_comp int,
+last_salary int,
+certif int,
+max_team_size int,
+visa bool,
+student_id int(5) not null,
+foreign key (student_id) references demodatabase.m_student(student_id)
+);
+
+select * from demodatabase.m_student;
+select * from demodatabase.m_stud_workexp;
+
+insert into demodatabase.m_stud_workexp values (3,2,4.5,1,0,True,100);
+insert into demodatabase.m_stud_workexp values (7,3,6,1,5,True,101);
+insert into demodatabase.m_stud_workexp values (5,4,4.8,1,3,False,102);
+insert into demodatabase.m_stud_workexp values (0,0,0,0,0,False,103);
+insert into demodatabase.m_stud_workexp values (9,2,10,3,20,False,104);
+insert into demodatabase.m_stud_workexp values (15,6,15,4,80,False,105);
+insert into demodatabase.m_stud_workexp values (2,1,4,0,0,False,106);
+insert into demodatabase.m_stud_workexp values (6,4,6.1,1,0,False,107);
+insert into demodatabase.m_stud_workexp values (7,3,7.2,2,0,True,108);
+insert into demodatabase.m_stud_workexp values (3,1,2.8,1,0,False,109);
+insert into demodatabase.m_stud_workexp values (5,2,4.2,1,0,True,110);
+insert into demodatabase.m_stud_workexp values (1,1,2,0,0,False,111);
+insert into demodatabase.m_stud_workexp values (0,0,0,0,0,False,112);
+insert into demodatabase.m_stud_workexp values (9,4,6.3,2,0,True,114);
+insert into demodatabase.m_stud_workexp values (6,4,5.8,1,0,False,115);
+insert into demodatabase.m_stud_workexp values (1,1,3,0,0,True,116);
+insert into demodatabase.m_stud_workexp values (4,1,4.5,2,0,False,117);
+insert into demodatabase.m_stud_workexp values (8,4,7.7,3,0,False,118);
+insert into demodatabase.m_stud_workexp values (2,2,2.85,1,0,False,119);
+
+select * from demodatabase.m_stud_workexp;
+
+select max(last_salary) from demodatabase.m_stud_workexp;-- find max salary
+select min(last_salary) from demodatabase.m_stud_workexp;-- find min salary
+select avg(last_salary) from demodatabase.m_stud_workexp;-- average salary
+select * from demodatabase.m_stud_workexp where visa is True; -- people with visa
+select visa, avg(total_exp) from demodatabase.m_stud_workexp group by visa;-- group by visa, find average work experience
+
+select * from demodatabase.m_stud_add;
+-- 3 table Join --
+use demodatabase;
+select a.student_id, a.fname, a.email, a.phone, b.city, b.state, b.country,
+c.total_exp,c.num_of_comp,c.last_salary
+from m_student a, m_stud_add b, m_stud_workexp c
+where b.student_id = a.student_id
+and c.student_id = a.student_id; -- method 1 --
+
+select a.student_id, a.fname, a.email, a.phone, b.city, b.state, b.country,
+c.total_exp,c.num_of_comp,c.last_salary
+from m_student a
+inner join m_stud_add b on b.student_id = a.student_id
+inner join m_stud_workexp c on c.student_id = a.student_id; -- method 2 --
+
+select * from m_stud_add where state in (
+select state from m_stud_add group by city having count(state) >= 2) ; -- 1) fetch all students address were count(state) is greater than or equal 2
+select state from m_stud_add group by city having count(state) >= 2; -- outputs states that have count greater than or equal to 2
+
+select a.student_id, a.fname, a.email, a.phone, b.city, b.state, b.country,
+c.total_exp, c.num_of_comp, c.last_salary
+from m_student a, m_stud_add b, m_stud_workexp c
+where b.student_id= a.student_id
+and c.student_id = a.student_id
+and b.city in (select city from m_stud_add group by city having count(city) >= 2); -- 2) fetch all the students personal info, address and work exp where count(state)
+-- is greater than or equal to 2
+
+select student_id, fname, email from demodatabase.m_student where email like '%yahoo%'
+union
+select student_id, fname, email from demodatabase.m_student where email like '%gmail%';-- 3) fetch student info whose email ids are "gmail" or "hotmail"
+
+use demodatabase;
+drop table customer;
+create table customer
+(
+custid integer primary key,
+custname varchar(20) not null,
+ctype varchar(20) not null,
+phone double not null,
+email varchar(20),
+totalorders int,
+cstatus varchar(10) default 'active'
+);
+
+desc customer; -- describe table schema
+select * from customer;
+insert into customer values (1, 'sriraman', 'hifi', 7173773, 'sri@sri.in', 19, 'active');
+insert into customer values (2, 'anu', 'corp', 77371, 'anu@haahee.in', 3, 'active');
+insert into customer values (3, 'vijay', 'indiv', 348838, 'naru@naru.in', 3, 'inactive');
+insert into customer values (4, 'prerna', 'corp', 393990, 'pre@hotmail.com', 4, 'inactive');
+insert into customer values (5, 'rajesh', 'hifi', 668931, 'rkumar@energy.in', 5, 'active');
+insert into customer values (6, 'seema', 'corp', 9599491, 'seemak@yahoo.com', 12, 'active');
+insert into customer values (7, 'chicku', 'indiv', 99593010, 'cs@gmail.com', 2, 'on-hold');
+insert into customer values (8, 'farah', 'hifi', 636171, 'fy@hotmail.com', 9, 'active');
+insert into customer values (9, 'latha', 'corp', 18888184, 'ls@gmail.com', 22, 'active');
+insert into customer values (10, 'shrikant', 'indiv', 9599591, 'sk@corp.in', 10, 'active');
+insert into customer values (11, 'shreya', 'hifi', 5858581, 'siyer@yahoo.in', 24, 'active');
+insert into customer values (12, 'arunm', 'indiv', 939391, 'am@gmail.com', 4, 'inactive');
+insert into customer values (13, 'nikita', 'hifi', 585819, 'nks@school.edu', 5, 'on-hold');
+insert into customer values (14, 'suresh', 'corp', 999391, 'skstore@gmail.com', 3, 'inactive');
+insert into customer values (15, 'raj', 'hifi', 9973719, 'raja@oricon.com', 1, 'active');
+insert into customer values (16, 'ganesh', 'corp', 7950713, 'csg@hotmail.com', 7, 'inactive');
+insert into customer values (17, 'meera', 'indiv', 71736171, 'mg@gmail.com', 6, 'active');
+insert into customer values (18, 'neha', 'corp', 5715387, 'neha@yahoo.in', 11, 'active');
+insert into customer values (19, 'nikhil', 'hifi', 146763473, 'nk@iit.org', 36, 'active');
+insert into customer values (20, 'smanhas', 'corp', 9499491, 'ppr@mymail.in', 5, 'on-hold');
+insert into customer values (21, 'pritam roy', 'indiv', 581885, 'ppr@mymail.in', 5, 'on-hold');
+insert into customer values (22, 'sandeep', 'corp', 3616634, 'sm@univ.edu', 13, 'active');
+
+insert into customer(custid, custname, ctype, phone, email,totalorders)
+values (23, 'jack', 'indiv', 545774, 'jack@jill.com',9); -- inserting values into selected columns
+
+insert into customer(custid, custname, ctype, phone, email,totalorders)
+values (24, 'mary', 'corp', 498488, 'mary@gmail.com',20); -- inserting values into selected columns
+
+-- 1) get the total count of data
+-- 2) select all customer ids and names only
+-- 3) select id, name, email, phone for all customers, sort by customer name (descending)
+-- 4) select customer data and sort in descending order of totalorders
+-- 5) select all active customers
+-- 6) count the number of active customers
+-- 7) get all customers who have ordered more than 20 products and arrange in descending order
+-- 8) get all customers who have ordered 5 or less products, arrange in ascending
+-- 9) get all customers where custid is 1,4,9,19
+-- 10) get all customers who are not in the question no 9
+-- 11) select all customers whose name begin with 'a'
+-- 12) select all customers who have k in their names
+-- 12) select all customers whose name end with l
+-- 13) select all customers who have totalcount more than 10 and less than 16
+-- 14) select unique values for ctype
+alter table customer add (gender varchar(1), age integer, mst varchar(1));-- 15) using alter table add following variables
+select * from customer;
+-- gender varchar(1)
+-- age integer
+-- mst varchar(1)
+-- 16) update customer table
+-- set gender ='m', age =31, mst='m' where custid=1
+update customer set gender='m',age=31,mst='m' where custid=1;
+select * from customer;
+update customer set gender='f',age=18,mst='s' where custid=11;
+update customer set gender='m',age=35,mst='s' where custid=12;
+update customer set gender='f',age=68,mst='m' where custid=13;
+update customer set gender='m',age=80,mst='s' where custid=14;
+update customer set gender='f',age=66,mst='m' where custid=15;
+update customer set gender='f',age=29,mst='s' where custid=16;
+update customer set gender='m',age=43,mst='m' where custid=17;
+update customer set gender='m',age=30,mst='m' where custid=18;
+update customer set gender='f',age=73,mst='m' where custid=19;
+update customer set age=23,mst='m' where custid=20;
+update customer set gender='f',mst='s' where custid=21;
+update customer set gender='f',age=24 where custid=22;
+update customer set gender='m',age=40,mst='s' where custid=24;
+
+-- 17) get all customers data whose gender is NULL
+-- 18) get all customers data where age is not null
+-- 19) select all customers whose status is inactive
+-- 20) update customer table
+-- set age=null, mst=null where custid=3
+-- 21) select customer with custid=3
+-- 22) select customer data who are active, married and under 50
+-- 23) select customer data where total orders are more than 25 OR age more than 65
+-- 24) select customer data whose names begin with A or S
+-- 25) select all non active customers using <>
+-- 26) Count how many customers are non active
+-- 27) Count the number of customers based on gender
+-- 28) get the count of customers based on cstatus, ignore nulls if any
+-- 29) get the count of customers where count of status is minimum 5
+-- 30) select total number of orders placed by customers
+-- 31) find the mean orders placed
+-- 32) find the average number of orders placed by non active customers
+-- 33) get the olders customers data
+
+-- coalesce -- used for replacing missing values --
+use demodatabase;
+select * from customer;
+select custid, custname, coalesce(age, -101), coalesce(gender, 'female') from customer;
+
+-- substring -- used for extracting a part of a string --
+select substr('SQL Tutorial', 1, 4) as ExtractString;
+select * from customer where substr(custname,1,2) = 'pr'; -- extracting names begning with pr
+-- extract from email starting with 5 and ending with 10
+select email, substr(email,5,10) as short_email from customer;
+
+-- case statement
+use demodatabase;
+select custid, custname, age, ctype,
+case when ctype='hifi' then 'Very High Priority'
+when ctype='corp' then 'High Priority'
+else 'Regular Priority' end as custtype from customer;
+
+select * from customer;
+
+select ctype, count(custid) from customer group by ctype order by count(custid) desc;
+-- create new variable called order quantity
+-- if totalorders<=5, low
+-- if totalorder is between 5 and 10 then medium
+-- else high
+
+drop table demodatabase.bank_inv_prc;
+create table demodatabase.bank_inv_prc (
+product varchar(20),
+quantity integer(5),
+price float(10),
+purchase float(10),
+estimated float(10),
+month_b integer(5)
+);
+
+load data infile 'C:\Users\lbhatt\Bank_Inventory_pricing.csv' into table demodatabase.bank_inv_prc
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SHOW VARIABLES LIKE "secure_file_priv";
+
+BULK INSERT demodatabase.bank_inv_prc
+FROM 'C:\Users\lbhatt\Bank_Inventory_pricing.csv'
+WITH
+(
+  FIRSTROW = 1,
+  DATAFILETYPE='widechar', -- UTF-16
+  FIELDTERMINATOR = ';',
+  ROWTERMINATOR = '\n',
+  TABLOCK,
+  KEEPNULLS -- Treat empty fields as NULLs.
+);
+
+select * from bank_inventory_pricing;
+
+
+
+####################################################################################################################################
+
+use mydb;
+
+
+select * from bank_account_details;
+select * from bank_account_relationship_details;
+select * from bank_account_transaction ;
+select * from bank_branch_pl ;
+select * from bank_customer;
+select * from bank_customer_export ;
+select * from bank_customer_messages;
+select * from bank_interest_rate ;
+select * from bank_inventory_pricing;
+select * from department_details;
+select * from employee_details ;
+use mydb;
+select count(*) from taxifare ;
+select * from taxifare;
+SELECT min(amount) from taxifare;   
+select * from taxifare where amount<=0 ;
+select max(amount) from taxifare where longitude_of_pickup=0 and latitude_of_pickup=0;
+SELECT max(amount) from taxifare; 
+SELECT * FROM taxifare WHERE amount BETWEEN -5 AND 5;
+
+
+create database dspdemodatabase;
+
+drop table dsp35.m_student;
+
+use mydb;
+create table mydb.m_student
+(
+student_id int(5) primary key,
+fname varchar(20) not null,
+lname varchar(20),
+gender varchar(6),
+dob varchar(10),
+email varchar(20) not null,
+phone int(10) not null,
+pg varchar(20),
+pg_rel varchar(20)
+);
+
+select * from mydb.m_student;
+
+insert into mydb.m_student values (104,'vijay','','m','','vijay@gmail.com',831090761,'','');
+insert into mydb.m_student values (105,'seema','','f','','seema@hotmail.com',931090976,'','');
+insert into mydb.m_student values (106,'rajesh','','m','','rajesh@gmail.com',77383932,'','');
+insert into mydb.m_student values (107,'anu','','f','','anu@ymail.com',12345678,'','');
+insert into mydb.m_student values (108,'shreya','','f','','shreya@hotmail.com',987654321,'','');
+insert into mydb.m_student values (109,'ritesh','','m','','ritesh@gmail.com',746353721,'','');
+insert into mydb.m_student values (110,'neha','','f','','neha@ymail.com',983794937,'','');
+insert into mydb.m_student values (111,'dharmesh','','m','','dharmesh@hotmail.com',12974648,'','');
+insert into mydb.m_student values (112,'ritu','','f','','ritu@gmail.com',486483364,'','');
+insert into mydb.m_student values (113,'rajesh','','m','','rajesh@gmail.com',837494733,'','');
+insert into mydb.m_student values (114,'priya','','f','','priya@ymail.com',837463829,'','');
+insert into mydb.m_student values (115,'rashmi','','f','','rashmi@gmail.com',384746383,'','');
+insert into mydb.m_student values (116,'pankaj','','m','','pankaj@gmail.com',394746398,'','');
+insert into mydb.m_student values (117,'biswa','','m','','biswa@hotmail.com',836484638,'','');
+
+select * from mydb.m_student;
+
+alter table mydb.m_student add column skpid varchar(10); -- add new column to the existing table
+
+update mydb.m_student set skpid = 'vijz' where student_id = 104;
+select * from mydb.m_student ;
+select * from mydb.m_student limit 6;
+select * from mydb.m_student limit 5,1;
+select count(*) from mydb.m_student ;
+select student_id , fname from mydb.m_student limit 5;
+
+### where clause #
+select student_id, fname email 
+from mydb.m_student where student_id = 104;
+
+update mydb.m_student set skypid = fname 
+where skypid is null;
+
+select * from mydb.m_student ;
+
+delete from mydb.m_student where student_id = 104;
+
+select count(*) from mydb.m_student ;
+select count(distinct fname) from mydb.m_student;
+select count(distinct student_id) from mydb.m_student;
+
+select * from mydb.m_student where gender ='m';
+
+select * from mydb.m_student where gender = 'f';
+
+select * from mydb.m_student where student_id=106 and gender ='m';
+
+select student_id, fname, gender, email, phone from mydb.m_student where student_id=108 or gender = 'f';
+
+select count(fname) from mydb.m_student;
+select distinct gender from mydb.m_student; 
+
+
+select min(age) from mydb.m_student;
+select max(age) from 
+
+drop table mydb.m_student;
+use mydb;
+CREATE TABLE mydb.m_student1
+(
+    student_id int(5) not null auto_increment, -- added auto increment
+    fname varchar(20),
+    lname varchar(20),
+    gender varchar(6),
+    age int(5),
+    email varchar(20),
+    phone int(10) ,
+    pg varchar(20),
+    pg_rel varchar(20),
+    primary key (student_id) -- changed
+);
+
+INSERT INTO mydb.m_student1 VALUES (100, 'Loveesh', '', 'm', 33, 'lbhatt@gmail.com', 1000900011, '', '' );
+INSERT INTO mydb.m_student1 VALUES (101, 'Ram', '', 'm', 55, 'ram@gmail.com', 1000900022, '', '' );
+INSERT INTO mydb.m_student1 VALUES (102, 'Shyam', '', 'm', 45, 'shyam@gmail.com', 1000900023, '', '' );
+INSERT INTO mydb.m_student1 VALUES (103, 'Sita', '', 'f', 22, 'sita@gmail.com', 1000900024, '', '' );
+INSERT INTO mydb.m_student1 VALUES (104, 'Ali', '', 'm', 35, 'ali@gmail.com', 1000900025, '', '' );
+INSERT INTO mydb.m_student1 VALUES (105, 'Gita', '', 'm', 38, 'gita@gmail.com', 1000900026, '', '' );
+INSERT INTO mydb.m_student1 VALUES (106, 'Shane', '', 'm', 28, 'shane@gmail.com', 1000900027, '', '' );
+INSERT INTO mydb.m_student1 VALUES (107, 'Stephny', '', 'f', 18, 'step@gmail.com', 1000900028, '', '' );
+INSERT INTO mydb.m_student1 VALUES (108, 'Guru', '', 'm', 34, 'guru@gmail.com', 1000900029, '', '' );
+INSERT INTO mydb.m_student1 VALUES (109, 'Soni', '', 'f', 47, 'soni@gmail.com', 1000900030, '', '' );
+INSERT INTO mydb.m_student1 VALUES (110, 'Mark', '', 'm', 30, 'mark@gmail.com', 1000900031, '', '' );
+
+select min(age) from mydb.m_student1;
+select * from mydb.m_student1 where age>30;
+select count(*) from mydb.m_student1 where age>30;
+select * from mydb.m_student1 where age >18 and age<35;
+select count(*) from mydb.m_student1 where age>18 and age<35;
+select * from mydb.m_student1 where age <25 or age>35;
+select count(*) from mydb.m_student1 where age <25 or age >35;
+select * from mydb.m_student1 where age=18;
+select * from mydb.m_student1 where fname in('Loveesh','Shane'); 
+select * from mydb.m_student1 where fname in('Loveesh','Shane') and age>30; 
+
+alter table mydb.m_student1 ADD COLUMN math_m int(5);
+select * from mydb.m_student1;
+
+update mydb.m_student1 set math_m = 92 where student_id = 100;
+update mydb.m_student1 set math_m = 95 where student_id = 101;
+update mydb.m_student1 set math_m = 83 where student_id = 102;
+update mydb.m_student1 set math_m = 78 where student_id = 103;
+update mydb.m_student1 set math_m = 92 where student_id = 104;
+update mydb.m_student1 set math_m = 75 where student_id = 105;
+update mydb.m_student1 set math_m = 44 where student_id = 106;
+update mydb.m_student1 set math_m = 63 where student_id = 107;
+update mydb.m_student1 set math_m = 70 where student_id = 108;
+update mydb.m_student1 set math_m = 76 where student_id = 109;
+update mydb.m_student1 set math_m = 97 where student_id = 110;
+
+select * from mydb.m_student1;
+
+delete from mydb.m_student1 where student_id = 111;
+delete from mydb.m_student1 where student_id = 112;
+delete from mydb.m_student1 where student_id = 113;
+
+alter table mydb.m_student1 drop column pg_rel;
+
+select * from mydb.m_student1;
+
+alter table mydb.m_student1 ADD COLUMN grade varchar(10);
+select * from mydb.m_student1;
+
+update mydb.m_student1 set Grade = 'A' where math_m >90;
+update mydb.m_student1 set Grade = 'B' where math_m >70 and math_m<=90 ;
+update mydb.m_student1 set Grade = 'C' where math_m <=70;
+
+select * from mydb.m_student1;
+
+select * from mydb.m_student1 where gender <> 'm';
+
+select avg(math_m) from mydb.m_student1 where gender ='m';
+select * from mydb.m_student1 where email like '%am%';
+select * from mydb.m_student1 where fname like 'Loveesh';
+
+select * from mydb.m_student1 where student_id between 105 and 110;
+
+select fname, email from mydb.m_student1 order by fname asc;
+select fname email from mydb.m_student1 order by fname desc;
+
+select fname, email, math_m from mydb.m_student1 order by math_m desc limit 5;
+select avg(math_m) from (select fname, email, math_m from mydb.m_student1 order by math_m desc limit 5) a; #a= aleyas name to the table
+select avg(math_m) from mydb.m_student1;
+
+
+#select avg(math_m) from (select * from mydb.m_student1 where
+
+INSERT INTO mydb.m_student1 VALUES (111, 'Deep', '', 'm', 32, 'deep@ymail.com', 1000900032, '', 85, 'B' );
+INSERT INTO mydb.m_student1 VALUES (112, 'Jai', '', 'm', 27, 'jai@ymail.com', 1000900033, '', 97, 'A' );
+INSERT INTO mydb.m_student1 VALUES (113, 'Tina', '', 'f', 26, 'tina@ymail.com', 1000900033, '', 82, 'B' );
+INSERT INTO mydb.m_student1 VALUES (114, 'Rishi', '', 'm', 33, 'rishi@ymail.com', 1000900033, '', 65, 'C' );
+INSERT INTO mydb.m_student1 VALUES (115, 'Shivani', '', 'f', 33, 'shivani@hotmail.com', 1000900034, '', 92, 'A' );
+INSERT INTO mydb.m_student1 VALUES (116, 'Soni', '', 'f', 27, 'soni@hotmail.com', 1000900035, '', 97, 'A' ); 
+
+select * from mydb.m_student1;
+
+select gender, count(student_id), AVG(math_m) from mydb.m_student1 group by gender;
+
+select grade , avg(math_m) from mydb.m_student1  group by grade order by avg(math_m) asc;
+select grade ,gender ,avg(math_m) , avg(age) from mydb.m_student1 group by grade, gender order by avg(age) desc;
+
+select grade ,gender ,avg(math_m) , avg(age) from mydb.m_student1 group by grade, gender having gender = 'm' order by avg(age) desc;
+
+select grade , avg(age) from mydb.m_student1 group by grade having avg(age) <30 order by avg(age);
+
+-- create table with foreign key reference --
+
+#drop table demodatabase.m_stud_add;
+create table mydb.m_stud_add
+(
+city varchar(20),
+state varchar(20),
+country varchar(20),
+student_id int(20) not null,
+foreign key (student_id) references m_student(student_id)
+);
+
+select * from demodatabase.m_student;
+select * from mydb.m_stud_add;
+
+insert into mydb.m_stud_add values ('Pune','Maharashtra','India',100);
+insert into mydb.m_stud_add values ('Chennai','TamilNadu','India',101);
+insert into mydb.m_stud_add values ('Mumbai','Maharashtra','India',102);
+insert into mydb.m_stud_add values ('Chandigarh','Punjab','India',103);
+insert into mydb.m_stud_add values ('Lucknow','UttarPradesh','India',104);
+insert into mydb.m_stud_add values ('Kanpur','UttarPradesh','India',105);
+insert into mydb.m_stud_add values ('Bangalore','Karnataka','India',106);
+insert into mydb.m_stud_add values ('Kochi','Kerala','India',107);
+insert into mydb.m_stud_add values ('Kolkata','WestBengal','India',108);
+insert into mydb.m_stud_add values ('NewYork','Newyork','USA',109);
+insert into mydb.m_stud_add values ('Miami','Florida','USA',110);
+insert into mydb.m_stud_add values ('Detroit','Michigan','USA',111);
+insert into mydb.m_stud_add values ('London','London','UK',112);
+insert into mydb.m_stud_add values ('Manchester','Manchester','UK',113);
+insert into mydb.m_stud_add values ('Tokyo','Kanto','Japan',114);
+insert into mydb.m_stud_add values ('Kansai','Honshu','Japan',115);
+insert into mydb.m_stud_add values ('Dubai','Dubai','UAE',116);
+
+select * from mydb.m_stud_add;
+
+#inner joint
+select count(*) from mydb.m_stud_add ;
+select a.student_id, a.fname , b.city from mydb.m_student1 a, mydb.m_stud_add b where a.student_id = b.student_id;
+
+INSERT INTO mydb.m_student1 VALUES (117, 'Rocky', '', 'm', 32, 'rocky@hotmail.com', 1000900040, '', 60, 'C' );
+INSERT INTO mydb.m_student1 VALUES (118, 'Tess', '', 'f', 35, 'tess@hotmail.com', 1000900041, '', 85, 'B' );
+INSERT INTO mydb.m_student1 VALUES (119, 'Gandry', '', 'm', 22, 'gandry@hotmail.com', 1000900042, '', 55, 'C' );
+select * from mydb.m_student1;
+
+select a.student_id, a.fname, b.city from mydb.m_student1 a inner join mydb.m_stud_add b where a.student_id = b.student_id;
+
+select a.student_id, a.fname, b.city from mydb.m_student1 a inner join mydb.m_stud_add b on a.student_id = b.student_id;
+
+select count(*) from(select a.student_id, a.fname, b.city  from mydb.m_student1 a inner join mydb.m_stud_add b where a.student_id = b.student_id) aa; 
+
+select aa.state as STATE, avg(age) as Average_age 
+from( select a.* , b.city, b.state, b.country 
+from mydb.m_student1 a inner join mydb.m_stud_add b where a.student_id = b.student_id
+ ) aa group by aa.state order by avg(aa.age) desc; 
+ 
+ ###left joint 
+ select aa.grade, avg(aa.math_m)  from (
+ select a.city, a.state, a.country , b.* 
+ from mydb.m_stud_add a left join mydb.m_student1 b on a.student_id = b.student_id 
+ ) aa group by aa.grade order by avg(aa.math_m) desc;
+ 
+ select grade , avg(math_m) from mydb.m_student1 group by grade order by avg(math_m) desc;
+ 
+ 
+ 
+ select avg(aa.math_m) from (
+ select a.city , a.state , a.country , b.* 
+ from mydb.m_stud_add a right outer join mydb.m_student1 b on a.student_id = b.student_id 
+ where a.student_id is null ) aa;
+ 
+ use mydb;
+ #insert into mydb.m_stud_add values ('Dubai','Dubai','UAE',116);
+insert into mydb.m_stud_add values ('pune ', 'MAHARASHTRA', 'inDia', 117);
+insert into mydb.m_stud_add values ('mumbai', 'maharashtra', 'india', 118);
+insert into mydb.m_stud_add values ('LUCKNOW', 'uttarpradesh', 'India', 119);
+insert into mydb.m_stud_add values ('chandigarh', 'punjab', 'India', 120);
+select *  from mydb.m_stud_add;
+
+
+select * from demodatabase.m_student where student_id IN (101 , 102 , 105);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

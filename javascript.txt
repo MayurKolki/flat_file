@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First JavaScript</h2>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
+
+
+<h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+
+</body>
+</html> 
+#######################################################################################################################33
+
+
+
+Your field of responsibility
+ 
+As part of the role your responsibilities include:
+
+ 
+
+Understand business use of Time series data and develop new solutions to make the product use more attractive for business users.
+On-boarding market and transaction data, data normalization, data analysis and build analytics over the data as per user requirement.
+Providing level 3 help to the support team when complex production issues require development input
+Contribute in market data and transaction data pre and post trade analytics.
+Build data quality issue detection, data reconciliation, data monitoring framework.
+ 
+
+
+Your future colleagues
+OneTick/Core Technology/IBIT team provides statistical and quantitative analytics for all the major markets across the globe for all the asset classes (Equities/Rates/FX). We capture and store real time and well as historical transactional data and market data. This is used to provide analytics to business users e.g. pre/post trade analytics, back testing quant strategies, volatility, spread computation, Alpha progression, Global Curve plotting, heatmap analysis and so on. OneTick team provides good blend of technology and analytics development work. OneTick's analytical engine is a stream oriented framework for efficient computations based on time series data.
+
+ 
+
+The department values Diversity and Inclusion (D&I) and is committed to realizing the firm’s D&I ambition which is an integral part of our global cultural values.
+
+ 
+
+Your skills and experience
+ 
+You would be working as data engineer and should possess below skill set:
+
+ 
+
+Graduate/Master’s degree in Information Technology, Computer Science or related subject.
+Proficient in any time series DBs or relational DBs.
+Hands on Python programming, Shell/Perl scripting along with C++ and object oriented concepts.
+Outstanding analytical problem solving and logical thinking skills.
+Possess effective communication skills with proficiency in written and spoken English.
+Good to have : Understanding of market data and markets globally.
+Technology Stack :
+C++, Python, Perl/Shell
+OS : Linux, Windows
+DB : Time series DBs, OneTick, SQL
+ 
+
+Understands the value of diversity in the workplace and is dedicated to fostering an inclusive culture in all aspects of working life so that people from all backgrounds receive equal treatment, realize their full potential and can bring their full, authentic selves to work
+ 
+
+Your new employer
+Find a new home for your skills, ideas, and ambitions. Credit Suisse offers you the ideal environment to progress your career, attractive benefits and excellent training.
+
+We are a leading wealth manager with strong global investment banking capabilities founded in 1856. Headquartered in Zurich, Switzerland, and with more than 45,000 employees from over 150 nations, we are always looking for motivated individuals to help us shape the future for our clients.
+
+Credit Suisse is an equal opportunity employer. Welcoming diversity gives us a competitive advantage in the global marketplace and drives our success. Our bank provides reasonable accommodations to qualified individuals with disabilities, as well as those with other needs or beliefs as may be protected under applicable local law. If you require assistance during the recruitment process, please let your recruiter know.
+
+Learn more about Credit Suisse
+Hiring steps →
+Benefits →
+Locations →
+Teams →
+Explore life at Credit Suisse
+FacebookInstagramYouTubeLinkedIn

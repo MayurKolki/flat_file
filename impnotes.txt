@@ -1,0 +1,233 @@
+##anomalies
+https://courses.analyticsvidhya.com/courses/take/getting-started-with-decision-trees/lessons/8157432-chi-square
+
+https://www.linkedin.com/learning/training-neural-networks-in-python
+
+https://developers.google.com/machine-learning/crash-course/reducing-loss/gradient-descent
+
+https://skillshop.exceedlms.com/student/catalog/browse
+
+https://source.unsplash.com/
+
+data analysis, data insight , model building, feature engineering , 
+data wrangling, cross validation,hyperparameter tunning,  discussion stackholders,  NBN NSS actively leader 
+ , business communication skills, deployment as per requirement
+
+
+aishwarya.salvi@imarticus.com
+rohan.chari@imarticus.com
+joy.vaz@imarticus.com
+
+
+
+pickle--> basic a serialized format of models [ML,DL we have "h" files]
+
+*** login credentials***
+
+https://data-flair.training/blogs/machine-learning-project-ideas/
+
+
+https://www.examtopics.com/exams/microsoft/70-778/view/16/
+
+i)  Case study on Corona 
+                 Project Description : study the novel corona virus analysis
+    “ https://www.worldometers.info/coronavirus/country/india/ “  this website helped to get the revisied data ,
+From which we where  able to draw graphs , plot the areas wise spread and recovery death rate , Pretty good insight /patterns where brought .
+ Monthly , weekly , data with respect to region wise graph where plot.
+  Growth rate was exponential  y=me^kx  and not the linear   y=mx+c
+   Rate of change = np.log(week2/week1)
+We did the analysis based on the rate of change weekly
+
+
+
+  project to share in  resume 
+ why we should use "softmax" whule building output layer pn NEURAL network in multiclass classification?
+
+  understanding the business problems 
+
+ in multiclass train test all the unqiue types shold be present in train data , so that model learn from the info whch it will obtain from data
+
+houseprice
+taxifare
+clas=binary,multiclassclass
+lin=lm,rf,svm 
+
+ETL ->(Extract, transform , load)
+
+assisment stat=63 
+linear stat=60
+
+Nielsen Castelo Damasceno Dantas    #<---github
+https://medium.com/swlh/temperature-forecasting-with-arima-model-in-python-427b2d3bcb53
+
+kaggle.com/nhunguyen1906/logistic-regression-bank-marketing
+
+https://github.com/alokrajg/Onion-Price-Analysis-in-India-Time-Series-/blob/master/4.%20Explore.ipynb
+
+http://neuralnetworksanddeeplearning.com/chap1.html
+
+https://github.com/WillKoehrsen?tab=repositories
+
+https://github.com/codebasics/py/blob/master/ML/FeatureEngineering/2_outliers_z_score/2_outliers_z_score.ipynb
+
+https://courses.targetcampus.com/users/my-courses/logical-reasoning-for-placements-2021/lessons/103
+
+http://localhost:8888/notebooks/ch7dictonary.ipynb
+
+mysqlcheatsheet   -->      https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3
+
+tensorflow ---->
+https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html
+
+z=1.645 at 95%
+as tvalue increases, p area decreases
+that is why we say area less than 0.05 is significant , 
+the value greater than 1.645 is significant
+
+kd nuggets ,data.gov.in  :->site for datasets
+https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html   
+
+https://www.infoq.com/presentations/netflix-crdt-entropy/?utm_source=youtube&utm_medium=link&utm_campaign=qcontalks
+
+https://towardsdatascience.com/image-scraping-with-python-a96feda8af2d
+
+space padding  :-func of python for giving space
+
+range of imagw - 0to 255
+
+import seaborn as sns
+#Using Pearson Correlation   range -1 to +1
+plt.figure(figsize=(12,10))
+cor = X_train.corr()
+sns.heatmap(cor, annot=True, cmap=plt.cm.CMRmap_r)
+plt.show()
+
+
+ask about baruto and reinforcementlearn? in chess with code
+how to do anova test for linear reg and scatter plot
+
+build one model with kfold v alidation
+can we see the predicted values actually values and best fit line on graph
+
+ROC curve after confusion matrix
+
+cross entropy for classification when CE value is least or
+ zero then it is showning good predictions_probabilities(loss function)
+############################
+What is hexadecimal used for?
+Hexadecimal (or hex) is a base 16 system used to simplify how binary is represented. 
+A hex digit can be any of the following 16 digits: 0 1 2 3 4 5 6 7 8 9 A B C D E F.
+ Each hex digit reflects a 4-bit binary sequence. 
+This table shows each hex digit with the equivalent values in binary and denary.
+###########################################3
+
+link octal form and hexadecimal form
+https://www.electronics-tutorials.ws/binary/bin_4.html
+
+###############################################################
+             --------OOP--------
+In this class, we discuss class and object with an example in python.
+Class is a blueprint of an object.
+An object is an instance of a class.
+We take an analogy to understand class and object.
+We will have a house blueprint on a chart.
+we construct a house in India, the USA, and Japan.
+The house that is given space in this world and constructed is an object.
+The same blueprint different houses. each is an object for the same class.
+
+
+In this class, we discuss constructor, instance variable, and self in python.
+A constructor is a special method that is called by a python interpreter during the time of object creation.
+__init__ is the constructor method.
+This method will take the first variable as the self.
+Python automatically takes the address of the object and assign it to a self variable to the methods present in the class.
+That is the reason methods in class by default first variable is self.
+Parameter values are taken from the second variable.
+self.variable name is considered as instance variables.
+These variables are given space in the object.
+Instance variables are global to all the methods in the class.
+Any method can access or modify the value.
+
+
+In this class, we discuss the class variable in python.
+The variable declared in the class called it a class variable.
+The memory is allocated to class variables during the compilation time.
+The variables that are declared as self are instance variables.
+instance variables are local to an object.
+Class variables are global to all the objects.
+Any object can use or modify the class variables.
+
+In this class, we discuss the method and constructor overloading in python.
+In python, we don't have the concept of method overloading or constructor overloading.
+First, we understand what is method overloading.
+If two different methods have the same name we call those methods are overloading methods.
+In python, if we write two methods with the same name. the method that is written last is considered.
+Whenever we call the method. the method written last is called.
+The same way constructor also.
+
+######################################################
+
+    githublink for pandas--->>>>>>             https://github.com/pandas-dev
+
+https://numpy.org/doc/stable/reference/routines.math.html
+pandas cheat sheet
+https://www.datacamp.com/community/blog/python-pandas-cheat-sheet?utm_campaignid=282657557&utm_adgroupid=1142393137300117&utm_device=c&utm_keyword=%2Bpandas%20%2Bcheat%20%2Bsheet&utm_matchtype=b&utm_network=s&utm_adpostion=&utm_creative=&utm_targetid=kwd-71400017506875&utm_loc_interest_ms=&utm_loc_physical_ms=1663&msclkid=29cc3e9f517f1b8cb7095edba6a719ad&utm_source=bing&utm_medium=cpc&utm_campaign=NEW%20Granular%20Topics%20(via%20DSA%20insights)%20%7C%20Worldwide%20BING&utm_term=%2Bpandas%20%2Bcheat%20%2Bsheet&utm_content=community%2Fblog%2Fpython-pandas-cheat-sheet
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.stack.html
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_sql.html
+##################################################### 
+               ----------SQL-----
+https://docs.data.world/documentation/sql/concepts/basic/SELECT_and_FROM.html
+#######################################################################################################
+
+https://youtu.be/9VQAwhp27eU
+
+How to prepare resume for data analyst: https://www.youtube.com/watch?v=79Wki...​
+Learn data analyst skills: https://www.youtube.com/watch?v=x6tnV...​
+Data structures tutorials: https://www.youtube.com/playlist?list...​
+
+Specific questions for data analyst position:
+https://www.springboard.com/blog/data...​ 
+
+https://www.indeed.com/hire/interview...​ 
+
+https://www.upgrad.com/blog/data-anal...​
+https://learning.naukri.com/articles/...​
+https://www.simplilearn.com/data-anal...​
+https://career.guru99.com/top-18-data...​
+Search through glassdoor questions: "Data analyst interview questions amazon" and prepare for specific questions asked in that company.
+https://www.glassdoor.co.in/Interview...​
+
+
+
+
+###########################################3
+
+while chance >=0:
+    pin = int('PLEASE ENTER your 4 digit pin:')
+    if pin ==(1234):
+        print('Your enter pin is correctly\n')
+        while restart not in ('n','NO','no','N'):
+            print('Please Press 1 FOR YOUR BALANCE\n')
+             print('Please Press 2 to make a withdrawl\n')
+            print('Please Press 3 to pay\n')
+             print('Please Press 4 to return card\n')
+             option = int(input('What would you like to choose?'))
+            if option ==1:
+                print('Your Balance is $',balance,'\n')
+                restart = input('Would you would like to go back?')
+                if restart in ('n','NO','no','N'):
+                    print('Thank you')
+                    break
+                    else optiob ==2:
+                        option2 = ('y')
+                        withdrawl=float(input('How much would you like to withdraw?\n$10/$20/$30/$40' ))
+                        if withdrawl in[10,20,30,40,60,80,100]:
+                            balance=balance-withdrawl
+                            print('\n your bal is $ ',balance)
+                            restart = 
+Asus ->         LAN0CV07N373425
+complain no ->  A2106071408-0001

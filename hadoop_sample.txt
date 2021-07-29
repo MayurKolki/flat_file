@@ -1,0 +1,645 @@
+#cocalc
+cd demo_1
+
+hadoop fs -copyFromLocal census.csv /PGA14-16
+
+hadoop fs -ls /PGA14-16
+
+hadoop fs -copyFromLocal bank.csv /PGA14-16
+
+hadoop fs -rm /PGA14-16/census.csv  #deleting census folder
+
+
+ cd~
+mkdir SB
+cd SB 
+SB$
+hadoop fs -copyToLocal /PGA14-16/bank.csv /home/hduser/SB
+
+ls 
+
+hadoop fs -cat /PGA14-16/bank.csv
+
+hadoop fs -rm /PGA14-16/bank.csv
+
+cd ~
+hive
+
+ ;
+show databases;
+
+hive>CREATE DATABASE IF NOT EXISTS SB;
+
+hive>use sb;
+show tables;
+
+hive> CREATE TABLE IF NOT EXISTS employee ( eid int, name String,
+salary String, designation String, dept String)
+COMMENT 'Employee details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+hive> show tables;
+
+ 
+
+#open one more terminal
+[
+cd demo_1
+vim employee.txt
+#copy paste this in the one exiting one
+id,name,salery,designation,dept
+1201,Gopal,45000,manager,HR
+1202,Manisha,45000,reader,IT
+1203,Masthan,40000,writer,IT
+1204,Kiran,55000,Admin,ADMIN
+:wq!
+]
+
+hive> LOAD DATA LOCAL INPATH '/home/hduser/demo_1/employee.txt'
+OVERWRITE INTO TABLE employee;
+
+hive> select * from employee;
+
+hive> select * from employee where salary >45000;
+
+hive>set hive.cli.print.header=true; #//Display header at the time of SQL execution;
+
+hive> select * from employee;
+
+hive> select * from employee where Dept="HR" AND salary>40000;
+
+hive> SELECT Dept,sum(salary) as Total_Sal, count(*) as Total_Emp FROM employee GROUP BY DEPT order by dept;
+
+hive> CREATE VIEW Total_Sal_dept AS SELECT Dept,sum(salary) as Total_Sal, count(*) as Total_Emp FROM employee GROUP BY DEPT order by dept;
+
+hive > select * from Total_Sal_dept;
+
+
+hive> CREATE TABLE IF NOT EXISTS orders( oid int, o_date date, CUSTOMER_ID int, amount int)
+COMMENT 'Order details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+hive>LOAD DATA LOCAL INPATH '/home/hduser/demo_1/orders.txt' OVERWRITE INTO TABLE orders;
+
+hive> CREATE TABLE IF NOT EXISTS CUSTOMERS( id int, name String, age int, address String, salary 
+Double) COMMENT 'Customer details' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES 
+TERMINATED BY '\n' STORED AS TEXTFILE;
+
+hive> LOAD DATA LOCAL INPATH '/home/hduser/demo_1/customers1.txt' OVERWRITE INTO TABLE 
+customers;
+
+hive> select * from orders;
+
+hive> select * from customers;
+
+hive> drop table customers;
+
+hive > drop table orders;
+
+hive> CREATE TABLE IF NOT EXISTS orders( oid int, o_date date, CUSTOMER_ID int, amount int)
+COMMENT 'Order details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+escp uppercase "x" ->it will work as backspace
+
+#change data and save
+
+hive> LOAD DATA LOCAL INPATH '/home/hduser/demo_1/orders.txt' OVERWRITE INTO TABLE orders;
+
+hive> CREATE TABLE IF NOT EXISTS CUSTOMERS( id int, name String, age int, address String, salary 
+Double) COMMENT 'Customer details' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES 
+TERMINATED BY '\n' STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+hive> LOAD DATA LOCAL INPATH '/home/hduser/demo_1/customers1.txt' OVERWRITE INTO TABLE 
+customers;
+
+hive> select * from customers;
+
+hive> SELECT c.ID, c.NAME, c.AGE, o.AMOUNT FROM CUSTOMERS c JOIN ORDERS o ON (c.ID = 
+o.CUSTOMER_ID);
+
+hive> SELECT CUSTOMERS.ID,CUSTOMERS.NAME, sum(ORDERS.AMOUNT) as Total_Amount FROM CUSTOMERS LEFT 
+OUTER JOIN ORDERS ON (CUSTOMERS.ID = ORDERS.CUSTOMER_ID) group by CUSTOMERS.NAME,
+CUSTOMERS.ID;
+
+#second terminal
+hadoop fs -copyFromLocal employee.txt /PGA14-16
+
+From demo_1 folder execute this code
+
+hive> select * from employee_ext;
+
+hadoop fs -cat /PGA14-16/employee.txt
+
+CREATE EXTERNAL TABLE IF NOT EXISTS employee_ext( eid int, name String,
+salary String, designation String, dept String)
+COMMENT 'Employee_ext details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/PGA14-16'
+TBLPROPERTIES("skip.header.line.count"="1");
+
+##############################################
+# 22 June 2021
+
+what is difference between managed and external table?
+ 
+
+./startHadoop.sh
+hive
+hive> show databases;
+hive>use sb;
+hive>show tables;
+hive>select * from customers;
+hive>desc employee_ext;
+manage tables are not tempory, 
+
+#open another terminal
+hadoop fs -ls / #we see employee_ext as external table
+hadoop fs -cat / PGA14-16/employee.txt
+
+#1st terminal
+hive> select * from employee_ext;
+hive> SHOW CREATE TABLE employee_ext;
+
+hive> CREATE TABLE emp_part (id INT, name STRING, dept STRING, yoj INT) PARTITIONED BY (year
+STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED as TEXTFILE;
+
+hive>LOAD DATA LOCAL INPATH '/home/hduser/demo_1/emp1.txt' OVERWRITE INTO TABLE emp_part PARTITION
+(year='2009');
+
+
+hive>select * from emp_part;
+
+hive>LOAD DATA LOCAL INPATH '/home/hduser/demo_1/emp2.txt' OVERWRITE INTO TABLE emp_part PARTITION
+(year='2010');
+
+hive>create temporary table emp_json(str string);
+
+hive>load data local inpath '/home/hduser/demo_1/employee.json' into table emp_json;
+
+hive>set hive.cli.print.header=true;
+
+
+hive>select get_json_object(str,'$.name') as name, get_json_object(str,'$.age') as age from
+emp_json;
+
+
+hive>select get_json_object(str,'$.name') as name, get_json_object(str,'$.age') as age from
+emp_json where get_json_object(str,'$.age') > 25;
+
+hive>CREATE TEMPORARY TABLE emp_temp_14(name string, age int);
+
+hive>INSERT OVERWRITE TABLE emp_temp_14 select get_json_object(str,'$.name'),
+get_json_object(str,'$.age') from emp_json;
+
+hive>select * from emp_temp_14;
+
+#open another terminal  create table employee_base in demo_1$
+
+id,FirstName,LastName,Sports,City,Country
+1001,Emerry,Blair,Basketball,Qutubullapur,San_Marino
+1002,Zephr,Stephenson,Cricket,Neerharen,Dominican_Republic
+1003,Autumn,Bean,Basketball,Neerharen,Dominican_Republic
+1004,Kasimir,Vance,Badminton,Neerharen,Dominican_Republic
+1005,Mufutau,Flores,,Qutubullapur,San_Marino
+1006,Ayanna,Banks,Football,Neerharen,Dominican_Republic
+1007,Selma,Ball,Tennis,Qutubullapur,San_Marino
+1008,Berk,Fuller,Badminton,Neerharen,Dominican_Republic
+1009,Imogene,Terrell,,Qutubullapur,San_Marino
+1010,Colorado,Hutchinson,Tennis,Qutubullapur,San_Marino
+
+#1st terminal
+
+hive> CREATE TABLE employee_base (
+ emplid INT,
+ firstname STRING,
+ lastname STRING,
+ sports STRING,
+ city STRING,
+ country STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+hive> LOAD DATA LOCAL INPATH '/home/hduser/demo_1/employee_base' INTO TABLE 
+employee_base;
+
+hive>select * from employee_base;
+
+hive> CREATE TABLE bucketed_partition_tbl (
+ empid INT,
+ firstname STRING,
+ lastname STRING,
+ sports STRING,
+ city STRING
+) PARTITIONED BY(country STRING)
+CLUSTERED BY (empid)
+SORTED BY (empid ASC) INTO 4 BUCKETS;
+
+hive> SET hive.enforce.bucketing=TRUE;
+
+
+hive> set hive.exec.dynamic.partition.mode=nonstrict; 
+
+hive> INSERT OVERWRITE TABLE bucketed_partition_tbl PARTITION (country) SELECT * FROM employee_base;
+
+hive> select * from bucketed_partition_tbl TABLESAMPLE(BUCKET 1 OUT OF 4 ON empid);
+ 
+hive> select * from bucketed_partition_tbl TABLESAMPLE(BUCKET 3 OUT OF 4 ON empid) where 
+country = 'San_Marino';
+
+#########
+#new topic -> PIG and Pig Latin
+ pig
+grunt> student = LOAD '/pig_data/student_details.txt' USING PigStorage(',') as
+(id:int, firstname:chararray,lastname:chararray, age:int,
+phone:chararray,city:chararray);
+
+grunt> dump student;
+
+#another terminal 
+STORE student INTO '/PGA14-16/student' USING PigStorage (',');
+
+hadoop fs -ls /PGA14-16/student
+
+hadoop fs -cat /PGA14-16/student/part-m-00000
+
+
+grunt> order_by_student_age = ORDER student BY age DESC;
+
+
+grunt> dump order_by_student_age;
+
+grunt> limit_student = LIMIT student 4;
+grunt> describe student;
+grunt>
+grunt>
+grunt>
+
+##################################################################
+#23 June 2021
+
+################################################
+#24 June 2021 
+
+mysql -u root -p
+password
+
+#another terminal
+./startHadoop.sh
+
+
+#1st terminal
+mysql> CREATE DATABASE PGA14to16;
+
+mysql> use PGA14to16;
+
+mysql> CREATE TABLE EMPLOYEE(
+ID INT NOT NULL,
+NAME VARCHAR (20) NOT NULL,
+SALARY DECIMAL(18,2)
+);
+
+mysql> INSERT INTO EMPLOYEE(ID,NAME,SALARY) VALUES (1, 'Ramesh',2000.00 );
+INSERT INTO EMPLOYEE(ID,NAME,SALARY) VALUES (2, 'Kiran',3000.00 );
+INSERT INTO EMPLOYEE(ID,NAME,SALARY) VALUES (3, 'Vikash',4000.00 );
+INSERT INTO EMPLOYEE(ID,NAME,SALARY) VALUES (4, 'Shaikat',5000.00 );
+INSERT INTO EMPLOYEE(ID,NAME,SALARY) VALUES (5, 'Mahesh',6000.00 );
+
+mysql> select * from EMPLOYEE;
+
+mysql> CREATE TABLE IF NOT EXISTS employee2 LIKE EMPLOYEE;
+
+mysql> desc employee2;
+
+#second terminal
+sqoop import --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table EMPLOYEE --m 1 --direct --where "ID <= 3" --delete-target-dir --target-dir /PGA1416
+
+hadoop fs -ls /PGA1416
+
+hadoop fs -cat /PGA1416/part-m-00000
+
+sqoop import --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table EMPLOYEE --m 1 --direct --incremental append --check-column ID --last-value 3  --target-dir /PGA1416
+
+hadoop fs -ls /PGA1416
+hadoop fs -cat /PGA1416/part-m-00001
+
+sqoop export --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table employee2 --m 1 --direct --export-dir /PGA1416
+
+
+#1st terminal
+
+mysql>select * from employee2;
+
+
+#another 3 terminal
+hive
+hive> show databases;
+
+hive> use SB;
+
+hive> select * from employee;
+
+hive>use sb;
+hive>drop table IF EXISTS orders;
+
+hive>CREATE TABLE IF NOT EXISTS orders( oid int, o_date date, CUSTOMER_ID int, amount int)
+COMMENT 'Order details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+hive>LOAD DATA LOCAL INPATH '/home/hduser/demo_1/orders.txt' OVERWRITE INTO TABLE orders;
+hive> select * from orders;
+
+
+From MySQL;
+mysql> CREATE TABLE orders(
+oid INT,
+o_date date,
+CUSTOMER_ID int, 
+amount int
+);
+
+mysql> desc orders;
+
+mysql> select * from orders;
+
+mysql> select * from orders1;
+
+mysql> drop table orders;
+
+mysql> CREATE TABLE orders(
+oid INT,
+o_date varchar(20),
+CUSTOMER_ID INT, 
+amount INT
+);
+
+hive>CREATE TABLE IF NOT EXISTS orders1( oid int, o_date String, CUSTOMER_ID int, amount int)
+COMMENT 'Order details'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+TBLPROPERTIES("skip.header.line.count"="1");
+
+
+hive>LOAD DATA LOCAL INPATH '/home/hduser/demo_1/orders.txt' OVERWRITE INTO TABLE orders1;
+
+hive>select * from orders1;
+
+mysql>drop table orders;
+
+mysql> CREATE TABLE orders(
+oid INT,
+o_date varchar(20),
+CUSTOMER_ID INT, 
+amount INT
+);
+
+
+hadoop fs -cat /user/hive/warehouse/sb.db/orders1/orders.txt
+
+sqoop export --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table orders --m 1 --direct --export-dir /user/hive/warehouse/sb.db/orders1 --input-fields-terminated-by ','
+
+mysql> select* from orders;
+
+hive> show databases;
+hive> show tables;
+hive> show tables;
+hive> select * from order default.tables;
+
+sqoop import --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table orders --m 1 --direct --hive-import
+hive> select * from default.orders;
+
+#terminal
+sqoop list-databases --connect jdbc:mysql://localhost/ --username root --password password 
+
+
+sqoop list-tables --connect jdbc:mysql://localhost/PGA14to16 --username root --password password
+
+purpose of scoop -> Import and export table from  sql to hadoop (hive to sql) hdfs file system , it will be in tabular format, 
+
+#############################################
+#25 June 2021
+./startHadoop.sh
+
+
+#2another terminal 
+mysql -u root -p #-u =>user -p=>password
+mysql>use PGA14TO16;
+
+#3another terminal
+hive
+hive>show databases;
+hive> show tables;
+
+
+#1st terminal
+sqoop list-tables --connect jdbc:mysql://localhost/PGA14to16 --username root --password password
+
+sqoop eval --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --query "SELECT * FROM EMPLOYEE where SALARY >3000"
+
+sqoop job --list
+
+sqoop job --delete myjob07  #to delete job
+# jobs are=> create a big command , we will call them as per requirements
+
+#control+ M -> time sceduling stuff
+
+to see target directory->  haddop fs -ls/
+
+hadoop fs -mkdir /sqoop
+
+hadoop fs -ls/
+
+mysql> show databases;
+
+mysql>use PGA14to16
+
+mysql> show tables;
+
+MYSQL> select * from EMPLOYEE;
+
+sqoop job --create PGA14to16 -- import  --connect jdbc:mysql://localhost/PGA14to16 --username root --password password --table EMPLOYEE  -m 1 --class-name EMPLOYEE --bindir $SQOOP_HOME/lib --delete-target-dir --target-dir /sqoop
+
+//List all jobs
+$> sqoop job --list
+
+cd~
+pwd
+
+ls *.java
+
+sqoop job --exec PGA14to16
+
+hadoop fs -cat /sqoop/part-m-00000
+
+#hive to sql ->export 
+
+hive> 
+###############################################
+
+#new topic -> JAVA 
+
+vim MyFirstJavaProgram.java
+
+public class MyFirstJavaProgram {
+/* This is my first java program.
+* This will print 'Hello World' as the output
+*/
+public static void main(String []args) { 
+ System.out.println("Hello World"); // prints Hello World
+}
+}
+
+javac MyFirstJavaProgram.java
+
+java MyFirstJavaProgram 
+
+vim MyFirstJavaProgram.java
+
+##########################################
+#26 June 2021
+./startHadoop.sh
+hadoop fs -ls /
+
+###########################################
+#28 June 2021
+#santu95@yahoo.com
+Assignment 
+
+cd demo_1
+ls *.json
+
+cd ~
+
+./startHadoop.sh
+hadoop fs -ls /
+
+cd demo_1
+hadoop fs -copyFromLocal olympic_data.txt /PGA14-16
+
+#############################################
+#spark
+spark-shell
+
+#another terminal
+ls *.sh
+./startJupyter.sh
+
+
+###save the peple.json file in hadoop
+hadoop fs -ls /
+
+hadoop fs -copyFromLocal people.json /PGA14-16
+
+#########################
+#8 july 2021
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
+#Create a Spark Application
+spark = SparkSession.builder.appName("groupbyagg").getOrCreate()
+
+#Load the athlete_events.csv
+athlete_events = spark.read.csv('file:///home/hduser/demo_1/athlete_events.csv',sep=',',inferSchema=True,header=True)
+
+athlete_events = athlete_events.dropDuplicates()
+
+#We need to correct Schema of athlete_events
+athlete_events_final = athlete_events.withColumn("Age",col("Age").cast("Integer")).withColumn("Height",col("Height").cast("Integer")).withColumn("Weight",col("Weight").cast("Integer"))     
+
+#Load the noc_regions.csv and Check the schema.
+noc_regions = spark.read.csv('file:///home/hduser/demo_1/noc_regions.csv',sep=',',inferSchema=True,header=True)
+noc_regions.printSchema()
+
+#Create Temp View of these 2 tables
+athlete_events_final.createOrReplaceTempView("athlete_events_final")
+noc_regions.createOrReplaceTempView("noc_regions")
+
+#Using SPARK SQL
+distribution_age_gold_medalists = spark.sql("select Age, count(Medal) as Medals from athlete_events_final where Medal = 'Gold' and Age > 0 group by Age order by Age asc")
+distribution_age_gold_medalists.show()
+
+
+#Using SPARK Library
+distribution_age_gold_medalists_PySpark = athlete_events_final.filter((athlete_events_final.Medal == "Gold") & (athlete_events_final.Age > 0)).select("Age","Medal").groupBy("Age").agg(count("Medal").alias("Total_Medal")).orderBy(asc("Age"))
+distribution_age_gold_medalists_PySpark.show()
+
+
+#Using SPARK SQL
+women_medals_per_edition = spark.sql("select count(Medal) as Medals, Year from athlete_events_final where Sex = 'F' and Season = 'Summer' and Medal in ('Bronze','Gold','Silver') group by Year order by Year asc")
+women_medals_per_edition.show()
+
+#Using SPARK Library
+women_medals_per_edition_PySpark = athlete_events_final.filter((athlete_events_final.Sex == "F") & (athlete_events_final.Season == "Summer") & (athlete_events_final.Medal.isin(["Bronze", "Gold", "Silver"]))).select("Year","Medal").groupBy("Year").agg(count("Medal").alias("Total_Medal")).orderBy(asc("Year"))
+women_medals_per_edition_PySpark.show()
+
+#Using SPARK SQL
+disciplines_greatest_number_Gold_Medals_USA = spark.sql("select count(Medal) as Medals, region, Event from athlete_events_final A JOIN noc_regions N ON A.NOC = N.NOC  where Medal = 'Gold' and A.NOC = 'USA' group by Event,region order by Medals desc")
+disciplines_greatest_number_Gold_Medals_USA.show()
+
+
+#Using SPARK Library
+disciplines_greatest_number_Gold_Medals_USA_PySpark = athlete_events_final.filter((athlete_events_final.Medal == "Gold") & (athlete_events_final.NOC == "USA")).join(noc_regions, athlete_events_final.NOC == noc_regions.NOC).select("Medal", "region", "Event").groupBy("Event", "region").agg(count("Medal").alias("Total_Medal")).orderBy(desc("Total_Medal"))
+disciplines_greatest_number_Gold_Medals_USA_PySpark.show()
+
+
+#Using SPARK SQL
+height_vs_weight_olympic_medalists = sqlContext.sql("select Weight, Height from athlete_events_final where  Medal = 'Gold' and Weight > 0 ")
+
+
+#Using SPARK SQL
+height_vs_weight_olympic_medalists = spark.sql("select Weight, Height from athlete_events_final where  Medal = 'Gold' and Weight > 0 ")
+
+#Change SPARK DF into PD
+height_vs_weight_olympic_medalists_PD=height_vs_weight_olympic_medalists.toPandas()
+
+# Draw a scatter plot
+height_vs_weight_olympic_medalists_PD.plot.scatter(x = 'Weight', y = 'Height', s = 5, c = 'green');
+
+
+#############################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

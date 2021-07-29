@@ -1,0 +1,58 @@
+False positive should be low when we are trying to convict a guilty person .An innocent person should never get punished.
+
+Our basic concept of Jurisprudence that the 100 culprits may let go free but no innocent should be punished.
+
+
+rig and rasso are basically regulization technique or generalization technique,
+ this methodlogic is used to  overcome the problem of overfitting ,
+it means when we get high accuracy we can say that there is the problem of overfitting and by adding some errrors ,we can reduce the accuracy ,
+rig regression in which we penlize the sum of suqare coefficients which is L2 penalti
+ and lasso regression which penalizes the sum of absolute values of coefficient iks L1
+
+what is diiference between rig and laso?
+lassos we can use for feature selection. both the techniques are used to minimize the multicolinearity.
+
+did analysis on the customer, recipes , man powers also finance
+
+anupamadeshmukh@ymail.com
+
+
+What does a Data Scientist do?
+Data Science is an amalgamation of Statistics, Computer Science and specific domain knowledge.
+As more and more data gets generated across the world, we need to leverage it to make decisions and improve them.
+A data scientist performs operations on the data provided to analyze and interpret it.
+
+
+
+
+first name - 'a%' 
+
+https://figmd.com/index.php
+
+https://drive.google.com/drive/folders/138Uos1mMK2kb-3FewOu8oqCz9TmUF9T7
+
+Mvk@4212
+
+https://www.youtube.com/watch?v=coxWfcz_sIk&list=PLrjkTql3jnm8ikiQIeIHrMYCaBfkBkfYR&ab_channel=Education4uEducation4uVerified
+
+
+After Graduation I had an opportunity to work in cloud kitchen ,
+ where I had keys roles such as managing and fullfilling the requirements of the clients 
+as well as training the human resources for the better results ..
+ while working as Business analyst .. 
+i came across the importance of data and how the data should managed proper ..
+so that we generate insights for the better results of business.
+In 2020  decided to do a PGP In Data Science .. 
+as if now the course is complete almost .. 
+i had done all my projects and capstones final project as well.. 
+
+so now i am looking for an opportunity .. 
+where i a can grow with the organisations..
+
+thank you for reaching out  to me.
+
+https://dendritecapitalpartners-my.sharepoint.com/personal/sbs_dendritecapitalpartners_com/_layouts/15/onedrive.aspx?originalPath=aHR0cHM6Ly9kZW5kcml0ZWNhcGl0YWxwYXJ0bmVycy1teS5zaGFyZXBvaW50LmNvbS86ZjovcC9zYnMvRWwzay1zTGdUZGhKc2VFZEJfQjE2aGNCbEdrTmNrRlJ4anZwT0JldHFTN18xZz9ydGltZT1IOTdibjVFZzJVZw&id=%2Fpersonal%2Fsbs%5Fdendritecapitalpartners%5Fcom%2FDocuments%2Fdendrite%20capital%2Fprojects%2Fserver%20%26%20ux%2Fdata%20science%2FCMI%2FProject%201%20%2D%20NLP%20Web%20Scraping%2FNew%20Issue%2FRaw%20Data
+
+
+
+https://becominghuman.ai/machine-learning-bias-vs-variance-641f924e6c57
